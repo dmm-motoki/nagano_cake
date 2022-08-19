@@ -6,11 +6,36 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar_brand" href="">ながのCAKE</a>
+          <ul class="navbar_nav">
+            <% if admin_signed_in? %>
+              <li class="nav_item">商品一覧</li>
+              <li class="nav_item">会員一覧</li>
+              <li class="nav_item">注文履歴一覧</li>
+              <li class="nav_item">ジャンル一覧</li>
+              <li class="nav_item">ログアウト</li>
+            <% elsif customer_signed_in? %>
+            <% else %>
+              <li class="nav_item">About</li>
+              <li class="nav_item">商品一覧</li>
+              <li class="nav_item">新規登録</li>
+              <li class="nav_item">ログイン</li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>
