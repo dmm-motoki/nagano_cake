@@ -12,22 +12,22 @@
 
   <body>
     <header>
-      <nav class="navbar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar_brand" href="">ながのCAKE</a>
-          <ul class="navbar_nav">
+          <a class="navbar-brand" href="">ながのCAKE</a>
+          <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-              <li class="nav_item">商品一覧</li>
-              <li class="nav_item">会員一覧</li>
-              <li class="nav_item">注文履歴一覧</li>
-              <li class="nav_item">ジャンル一覧</li>
-              <li class="nav_item">ログアウト</li>
+              <li class="nav-item"><%= link_to '商品一覧', admin_items_path %></li>
+              <li class="nav-item"><%= link_to '会員一覧', admin_customers_path %></li></li>
+              <li class="nav-item"><%= link_to '注文履歴一覧', admin_homes_top_path %></li>
+              <li class="nav-item"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
+              <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
             <% elsif customer_signed_in? %>
             <% else %>
-              <li class="nav_item">About</li>
-              <li class="nav_item">商品一覧</li>
-              <li class="nav_item">新規登録</li>
-              <li class="nav_item">ログイン</li>
+              <li class="nav-item"><%= link_to 'About', homes_about_path %></li>
+              <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
+              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
+              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
             <% end %>
           </ul>
         </div>
