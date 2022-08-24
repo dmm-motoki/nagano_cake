@@ -1,1 +1,23 @@
+<h2>商品一覧</h2>
 <button class="btn btn-light0"><%= link_to '+', new_admin_item_path %></button>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |items| %>
+      <tr>
+        <td><%= items.id %></td>
+        <td><%= link_to items.name, admin_item_path(items.id) %></td>
+        <td><%= items.price %></td>
+        <td><%= items.genre.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
