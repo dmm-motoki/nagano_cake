@@ -1,2 +1,21 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+<table>
+  <% @order.each do |order| %>
+    <tr>
+      <th>購入者</th>
+      <th><%= order.customer_id.last_name %> <%= order.customer_id.first_name %></th>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <th><%= order.created_at %></th>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <th><%= order.address %><br><%= order.name %></th>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <th><%= order.payment_method %></th>
+    </tr>
+  <% end %>
+</table>

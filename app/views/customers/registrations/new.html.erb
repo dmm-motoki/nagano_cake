@@ -50,8 +50,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
+<h2>既に登録済みの方</h2>
+
+<p><span><%= link_to "こちら", new_customer_session_path %></span> からログインしてください。</p>

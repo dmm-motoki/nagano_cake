@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/show'
+    resources :orders, only: [:show]
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show]
-  get 'homes/top'
+  root to: "homes#top"
   get 'homes/about'
   devise_for :customers
   devise_for :admins

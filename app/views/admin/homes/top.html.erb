@@ -10,9 +10,9 @@
   <tbody>
     <% @orders.each do |orders| %>
       <tr>
-        <th><%= orders.created_at %></th>
+        <th><%= link_to orders.created_at, admin_order_path(orders.id) %></th>
         <th><%= orders.customer_id.last_name + orders.customer_id.first_name %></th>
-        <th><%= orders.%></th>
+        <th><%= orders.order_detail.amount %></th>
       </tr>
     <% end %>
   </tbody>
