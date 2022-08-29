@@ -1,23 +1,27 @@
-<h2>商品一覧</h2>
-<button class="btn btn-light0"><%= link_to '+', new_admin_item_path %></button>
+<div class="container">
+  <div class="row justify-content-between my-4">
+    <h2 class="bg-light px-5">商品一覧</h2>
+    <button class="btn btn-light0"><%= link_to '+', new_admin_item_path, class: "text-dark font-weight-bold" %></button>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |items| %>
+  <table class="table table-lg">
+    <thead class="bg-light">
       <tr>
-        <td><%= items.id %></td>
-        <td><%= link_to items.name, admin_item_path(items.id) %></td>
-        <td><%= items.price %></td>
-        <td><%= items.genre.name %></td>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @items.each do |items| %>
+        <tr>
+          <td><%= items.id %></td>
+          <td><%= link_to items.name, admin_item_path(items.id), class: "text-dark" %></td>
+          <td><%= items.price %></td>
+          <td><%= items.genre.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
