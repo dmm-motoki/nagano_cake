@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row justify-content-between my-4">
     <h2 class="bg-light px-5">商品一覧</h2>
-    <button class="btn btn-light0"><%= link_to '+', new_admin_item_path, class: "text-dark font-weight-bold" %></button>
+    <%= link_to new_admin_item_path do %>
+      <button type="button" class="btn btn-light rounded-circle p-0" style="width:3rem;height:3rem;">＋</button>
+    <% end %>
   </div>
 
   <table class="table table-lg">
@@ -11,6 +13,7 @@
         <th>商品名</th>
         <th>税抜価格</th>
         <th>ジャンル</th>
+        <th>ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +23,13 @@
           <td><%= link_to items.name, admin_item_path(items.id), class: "text-dark" %></td>
           <td><%= items.price %></td>
           <td><%= items.genre.name %></td>
+          <td>
+            <% if items.is_active = true %>
+              <p class="text-success font-weight-bold">販売中</p>
+            <% else %>
+              <p class="text-muted font-weight-bold">販売停止中</p>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -1,34 +1,54 @@
-<h2><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th><%= @customer.id %></th>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <th><%= @customer.last_name %> <%= @customer.first_name %></th>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <th><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <th><%= @customer.postal_code %></th>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <th><%= @customer.address %></th>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <th><%= @customer.telephone_number %></th>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <th><%= @customer.email %></th>
-  </tr>
-</table>
-
-<%= link_to "編集する",  edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文履歴一覧を見る", admin_homes_top_path %>
+<div class="container">
+  <div class="row my-5">
+    <h2 class="bg-light px-5"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
+  </div>
+  <div class="row">
+    <table class="ml-5">
+      <tr>
+        <th><p class="my-2">会員ID</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.id %></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">氏名</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.last_name %> <%= @customer.first_name %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">フリガナ</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">郵便番号</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.postal_code %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">住所</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.address %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">電話番号</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.telephone_number %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">メールアドレス</p></th>
+        <th><p class="my-2 ml-5"><%= @customer.email %></p></th>
+      </tr>
+      <tr>
+        <th><p class="my-2">会員ステータス</p></th>
+        <th>
+          <% if @customer.is_active = true %>
+            <p class="my-2 ml-5 text-success">有効</p>
+          <% else %>
+            <p class="my-2 ml-5 text-muted">退会</p>
+          <% end %>
+        </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>
+          <%= link_to "編集する",  edit_admin_customer_path(@customer.id), class: "btn btn-success btn-lg mx-5 my-2" %>
+          <%= link_to "注文履歴一覧を見る", admin_homes_top_path, class: "btn btn-primary btn-lg my-2 mx-5" %>
+        </th>
+      </tr>
+    </table>
+  </div>
+</div>
