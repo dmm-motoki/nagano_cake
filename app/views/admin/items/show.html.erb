@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th><p class="my-2">税込価格<br>（税抜価格）</p></th>
-          <th><p class="my-2 ml-3"><%= @item.price %>円</p></th>
+          <th><p class="my-2 ml-3"><%= @item.taxin_price.floor %>(<%= @item.price %>)円</p></th>
         </tr>
         <tr>
           <th><p class="my-2">販売ステータス</p></th>
