@@ -1,23 +1,32 @@
-<h2>ログイン</h2>
-
-<h5>会員の方はこちらからログイン</h5>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row my-5">
+    <h2 class="bg-light px-3">ログイン</h2>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <h5 class="ml-5 bg-light px-3">会員の方はこちらからログイン</h5>
   </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="row justify-content-center my-3">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tr>
+          <th><p class="mr-5">メールアドレス</p></th>
+          <th><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-100 mb-3" %></th>
+        </tr>
+        <tr>
+          <th><p class="my-auto">パスワード</p></th>
+          <th><%= f.password_field :password, autocomplete: "current-password", class: "form-control", size: "50 x 10" %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.submit "ログイン", class: "mt-5 btn btn-primary btn-lg px-5" %></th>
+        </tr>
+      </table>
+    <% end %>
   </div>
-<% end %>
-
-<h5>会員登録がお済みでない方</h5>
-
-<p><span><%= link_to "こちら", new_customer_registration_path %></span> から新規登録を行ってください。</p>
+  <div class="row mb-3">
+    <h5 class="ml-5 mt-3 bg-light px-3">会員登録がお済みでない方</h5>
+  </div>
+  <div class="row justify-content-center">
+    <p><span class="mr-2"><%= link_to "こちら", new_customer_registration_path %></span> から新規登録を行ってください。</p>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
-    <h2>ショッピングカート</h2>
+  <div class="row my-3">
+    <h2 class="bg-light px-3 ml-3">ショッピングカート</h2>
   </div>
   <div class="row">
-    <table class="table table-md">
+    <table class="table table-md table-bordered">
       <thead class="bg-light">
         <tr>
           <th>商品名</th>
@@ -18,7 +18,12 @@
           <tr>
             <td><%= image_tag cart_items.item.get_image(50,50) %><%= cart_items.item.name %></td>
             <td><%= cart_items.item.taxin_price.floor %></td>
-            <td><%= cart_items.amount %></td>
+            <td>
+              <%= form_with model: cart_items do |f| %>
+                <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+                <%= f.submit "変更", class: "btn btn-success" %>
+              <% end %>
+            </td>
             <td><%= cart_items.item.taxin_price.floor * cart_items.amount %></td>
             <td><%= link_to "削除する", cart_item_path(cart_items.id), method: :delete, class: "btn btn-danger" %></td>
           </tr>
@@ -26,18 +31,22 @@
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
-    <table>
-      <tr>
-        <th>合計金額</th>
-        <th>
-          <%= @total.round.to_s(:delimited) %>
-        </th>
-      </tr>
-    </table>
+  <div class="row justify-content-between my-3">
+    <div class="col-md-3">
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-md-3">
+      <table class="table table-md table-bordered">
+        <tr>
+          <th class="bg-light">合計金額</th>
+          <th>
+            <%= @total.round.to_s(:delimited) %>
+          </th>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="row">
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+  <div class="row justify-content-center">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-lg" %>
   </div>
 </div>
