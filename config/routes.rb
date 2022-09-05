@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'orders/complete'
   get 'customers/my_page' => 'customers#show'
   get 'customers/information/edit' => 'customers#edit'
+  patch 'customers/information' => 'customers#update'
   get 'customers/unsubscribe'
   namespace :admin do
     resources :orders, only: [:show]
