@@ -11,7 +11,7 @@
     </table>
   </div>
   <div class="row">
-    <table class="table table-md table-bordered">
+    <table class="table table-md table-bordered mb-5">
       <tr>
         <th class="bg-light">氏名</th>
         <th><%= @customer.last_name + @customer.first_name %></th>
@@ -42,11 +42,11 @@
     <table>
       <tr>
         <th><h3 class="font-weight-bold">配送先</h3></th>
-        <th><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary px-4" %></th>
+        <th><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary px-4 ml-4" %></th>
       </tr>
       <tr>
-        <th><h3 class="font-weight-bold">注文履歴</h3></th>
-        <th><%= link_to "一覧を見る", orders_path, class: "btn btn-primary px-4" %></th>
+        <th><h3 class="font-weight-bold mt-4">注文履歴</h3></th>
+        <th><%= link_to "一覧を見る", orders_path, class: "btn btn-primary px-4 ml-4 mt-3" %></th>
       </tr>
     </table>
   </div>
