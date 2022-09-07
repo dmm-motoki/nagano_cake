@@ -19,6 +19,13 @@ class CustomersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.is_active = false
+    @customer.update
+    redirect_to root_path
+  end
+
   private
 
   def customer_params

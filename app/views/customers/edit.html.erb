@@ -74,9 +74,12 @@
         <tr>
           <th></th>
           <th>
-            <div class="form-row">
+            <div class="form-row justify-content-between">
               <div class="col-6">
                 <%= f.submit "編集内容を保存", class: "btn btn-success form-control my-3 ml-5" %>
+              </div>
+              <div class="col-3">
+                <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger my-3 form-control" %>
               </div>
             </div>
           </th>

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'customers/my_page' => 'customers#show'
   get 'customers/information/edit' => 'customers#edit'
   patch 'customers/information' => 'customers#update'
-  get 'customers/unsubscribe'
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
   namespace :admin do
     resources :orders, only: [:show]
   end
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
-  resources :cart_items, only: [:index, :create, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :orders, only: [:new, :index, :show]
   resources :addresses, only: [:index, :create, :edit, :destroy, :update]
