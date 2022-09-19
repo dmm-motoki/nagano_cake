@@ -20,10 +20,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-
-  resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-  resources :orders, only: [:new, :index, :show]
+  resources :cart_items, only: [:index, :create, :update, :destroy]
+  resources :orders, only: [:new, :create, :index, :show] do
+    collection do
+      post :confirm
+    end
+  end
   resources :addresses, only: [:index, :create, :edit, :destroy, :update]
   resources :items, only: [:index, :show]
   root to: "homes#top"
