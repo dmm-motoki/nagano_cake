@@ -1,2 +1,40 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div>
+  <div>
+    <h3>注文履歴詳細</h3>
+  </div>
+  <div>
+    <div>
+      <h6></h6>
+      <table>
+        <tr>
+          <th>注文日</th>
+          <th><%= @order.created_at %></th>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <th>
+            <%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </th>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <th><%= @order.payment_method_i18n %></th>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <th><%= @order.status %></th>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th>商品合計</th>
+          <th><%= %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

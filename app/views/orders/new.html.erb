@@ -37,7 +37,7 @@
       </div>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <%= f.hidden_field :postage, :value => 800 %>
-        <%= f.hidden_field :total_price, :value => 888 %>
+        <%= f.hidden_field :total_price, :value => @total_price %>
         <%= f.submit '確認画面へ進む' %>
       </div>
     <% end %>

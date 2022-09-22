@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
+    @cart_items = current_customer.cart_items.all
   end
 
   def confirm
     @order = Order.new(order_params)
     @cart_items = @order.customer.cart_items.all
+    @total_price = @order.postage + @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }.floor
     if params[:order][:address_select] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -27,6 +29,7 @@ class OrdersController < ApplicationController
   def create
     @orders = Order.new(order_params)
     if @orders.save
+      Customer.find(current_customer.id).cart_items.destroy_all
       redirect_to orders_complete_path
     else
       render :new
@@ -34,9 +37,11 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
