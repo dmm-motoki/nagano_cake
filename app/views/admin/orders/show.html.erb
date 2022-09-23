@@ -1,21 +1,28 @@
-<h2>注文履歴詳細</h2>
-<table>
-  <% @order.each do |order| %>
-    <tr>
-      <th>購入者</th>
-      <th><%= order.customer_id.last_name %> <%= order.customer_id.first_name %></th>
-    </tr>
-    <tr>
-      <th>注文日</th>
-      <th><%= order.created_at %></th>
-    </tr>
-    <tr>
-      <th>配送先</th>
-      <th><%= order.address %><br><%= order.name %></th>
-    </tr>
-    <tr>
-      <th>支払方法</th>
-      <th><%= order.payment_method %></th>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>注文履歴詳細</h2>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <th>購入者</th>
+        <th><%= @order.customer.full_name %></th>
+      </tr>
+      <tr>
+        <th>注文日</th>
+        <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <th>〒<%= @order.postal_code%> <%= @order.address %><br><%= @order.name %></th>
+      </tr>
+      <tr>
+        <th>支払方法</th>
+        <th><%= @order.payment_method_i18n %></th>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    
+  </div>
+</div>
