@@ -7,10 +7,10 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    if @address.save!
+    if @address.save
       redirect_to addresses_path
     else
-      render :index
+      redirect_to addresses_path
     end
   end
 
@@ -29,7 +29,7 @@ class AddressesController < ApplicationController
     if @address.update(address_params)
       redirect_to addresses_path
     else
-      render :edit
+      redirect_to addresses_path
     end
   end
 

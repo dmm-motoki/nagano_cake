@@ -35,9 +35,9 @@
       <tr>
         <th><p class="my-2">会員ステータス</p></th>
         <th>
-          <% if @customer.is_active = true %>
+          <% if @customer.is_active == true %>
             <p class="my-2 ml-5 text-success">有効</p>
-          <% else %>
+          <% elsif @customer.is_active == false %>
             <p class="my-2 ml-5 text-muted">退会</p>
           <% end %>
         </th>

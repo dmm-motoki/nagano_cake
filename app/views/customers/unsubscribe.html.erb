@@ -1,16 +1,17 @@
 <div class="container d-flex" style="height:600px;">
   <div class="row justify-content-center">
     <div class="col-12 mt-auto" style="height:50px;">
-    <h2 class="text-center font-weight-bold">本当に退会しますか？</h3>
+      <h2 class="text-center font-weight-bold">本当に退会しますか？</h3>
     </div>
     <div class="col-12">
-    <p class="text-center h3 mt-5">
-      退会すると、会員登録や<br>
-      これまでの購入履歴が閲覧できなくなります。<br>
-      大会する場合は、「退会する」をクリックしてください。
-    </p>
+      <p class="text-center h3 mt-5">
+        退会すると、会員登録や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        大会する場合は、「退会する」をクリックしてください。
+      </p>
     </div>
       <%= link_to "退会しない", customers_my_page_path(current_customer.id), class: "btn btn-primary btn-lg form-control col-2 mx-2" %>
-      <%= link_to "退会する", customers_withdraw_path(current_customer.id), method: :patch, class: "btn btn-danger btn-lg form-control col-2 mx-2" %>
+      <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger btn-lg form-control col-2 mx-2" %>
+
   </div>
 </div>

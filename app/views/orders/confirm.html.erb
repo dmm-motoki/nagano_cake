@@ -55,8 +55,7 @@
      <%= f.hidden_field :postage, :value => @order.postage %>
      <%= f.hidden_field :total_price, :value => @total_price %>
      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-     <%= f.submit '注文を確定する' %>
+     <%= f.submit '注文を確定する', class: "btn btn-success btn-lg" %>
     <% end %>
-    <%= link_to "注文を確定する", orders_path, method: :post, class: "btn btn-success btn-lg" %>
   </div>
 </div>

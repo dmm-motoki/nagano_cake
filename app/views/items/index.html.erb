@@ -10,8 +10,8 @@
           <%= link_to item_path(items.id) do %>
             <div>
               <%= image_tag items.get_image(200,200) %>
-              <p><%= items.name %></p>
-              <p>￥<%= items.taxin_price.floor %></p>
+              <p class="text-dark"><%= items.name %></p>
+              <p class="text-dark">￥<%= items.taxin_price.floor %></p>
             </div>
           <% end %>
         </li>

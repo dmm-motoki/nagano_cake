@@ -11,9 +11,10 @@ class CartItemsController < ApplicationController
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
       redirect_to cart_items_path
-    else
-      @cart_item.save
+    elsif @cart_item.save
       redirect_to cart_items_path
+    else
+      redirect_to items_path
     end
   end
 
@@ -28,7 +29,7 @@ class CartItemsController < ApplicationController
 
   def destroy_all
     Customer.find(current_customer.id).cart_items.destroy_all
-    redirect_to items_path
+    redirect_to cart_items_path
   end
 
   def destroy

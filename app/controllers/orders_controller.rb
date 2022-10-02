@@ -29,6 +29,15 @@ class OrdersController < ApplicationController
   def create
     @orders = Order.new(order_params)
     if @orders.save
+      @cart_items = current_customer.cart_items.all
+        @cart_items.each do |cart_item|
+          @order_details = OrderDetail.new
+          @order_details.order_id = @orders.id
+          @order_details.item_id =cart_item.item_id
+          @order_details.price = cart_item.item.price * 1.1
+          @order_details.amount = cart_item.amount
+          @order_details.save
+        end
       Customer.find(current_customer.id).cart_items.destroy_all
       redirect_to orders_complete_path
     else
@@ -37,7 +46,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
@@ -48,5 +57,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :postage, :total_price, :payment_method, :postal_code, :address, :name)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:order_id, :item_id, :price, :amount, :making_status)
   end
 end

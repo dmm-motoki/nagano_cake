@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   has_many :order_details
   belongs_to :genre
 
+  validates :name, :introduction, :genre_id, :price, presence: true
+
   def taxin_price
     price*1.1
   end
