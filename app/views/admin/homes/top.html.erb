@@ -17,7 +17,7 @@
           <tr>
             <th><%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(orders.id), class: "text-dark" %></th>
             <th><%= orders.customer.full_name %></th>
-            <th></th>
+            <th><%= orders.order_details.inject(0) { |sum, item| sum + item.amount } %></th>
             <th><%= orders.status %></th>
           </tr>
         <% end %>

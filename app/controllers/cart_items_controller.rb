@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     elsif @cart_item.save
       redirect_to cart_items_path
     else
-      redirect_to items_path
+      render :index
     end
   end
 

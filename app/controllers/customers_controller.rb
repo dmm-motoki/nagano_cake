@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find(customer_params[:id])
+    @customer = Customer.find(current_customer.id)
     @customer.is_active = false
     @customer.update(customer_params)
 
