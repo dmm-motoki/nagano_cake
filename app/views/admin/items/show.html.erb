@@ -27,7 +27,7 @@
         <tr>
           <th><p class="my-2">販売ステータス</p></th>
           <th>
-            <% if @item.is_active = true %>
+            <% if @item.is_active == true %>
               <p class="text-success font-weight-bold my-auto ml-3">販売中</p>
             <% else %>
               <p class="text-muted font-weight-bold my-auto ml-3">販売停止中</p>
