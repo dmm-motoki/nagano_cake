@@ -20,7 +20,7 @@
             <td><%= image_tag cart_items.item.get_image(50,50) %><%= cart_items.item.name %></td>
             <td><%= cart_items.item.taxin_price.floor %></td>
             <td>
-              <%= form_with model: cart_items, url: create_cart_items_path do |f| %>
+              <%= form_with model: cart_items, url: update_cart_items_path(cart_items.id) do |f| %>
                 <%= f.select :amount, [*1..100] %>
                 <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
